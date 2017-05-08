@@ -13,7 +13,7 @@ class jmeter (
   $jmeter_plugins_set     = ['Standard'],
   $download_url           = 'http://archive.apache.org/dist/jmeter/binaries/',
   $plugin_url             = 'http://jmeter-plugins.org/downloads/file/',
-  $jdk_pgk                = $::jmeter::params::jdk_pkg,
+  $jdk_pkg                = $::jmeter::params::jdk_pkg,
 ) inherits ::jmeter::params {
 
   validate_re($download_url, '^((https?|ftps?):\/\/)([\da-z\.-]+)\.?([\da-z\.]{2,6})([\/\w \.\:-]*)*\/?$')
