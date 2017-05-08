@@ -13,15 +13,13 @@ class jmeter (
   $jmeter_plugins_set     = ['Standard'],
   $download_url           = 'http://archive.apache.org/dist/jmeter/binaries/',
   $plugin_url             = 'http://jmeter-plugins.org/downloads/file/',
-  $java_version           = $::jmeter::params::java_version,
+  $jdk_pgk                = $::jmeter::params::jdk_pkg,
 ) inherits ::jmeter::params {
 
   validate_re($download_url, '^((https?|ftps?):\/\/)([\da-z\.-]+)\.?([\da-z\.]{2,6})([\/\w \.\:-]*)*\/?$')
   validate_re($plugin_url, '^((https?|ftps?):\/\/)([\da-z\.-]+)\.?([\da-z\.]{2,6})([\/\w \.\:-]*)*\/?$')
 
   Exec { path => '/bin:/usr/bin:/usr/sbin' }
-
-  $jdk_pkg = $::jmeter::params::jdk_pkg
 
   ensure_resource('package', [$jdk_pkg, 'unzip', 'wget'], {'ensure' => 'present'})
 
