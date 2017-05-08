@@ -15,8 +15,8 @@ class jmeter::params {
     'RedHat' : {
       $init_template = 'jmeter/jmeter-init.redhat.erb'
       $service_provider = redhat
-      $java_version  = '7'
-      $jdk_pkg       = "java-1.${java_version}.0-openjdk"
+      $java_version  = '8'
+      $jdk_pkg       = "java-1.${java_version}.0-oracle-devel"
     }
     default: {
       fail("Module ${module_name} is not supported on ${::operatingsystem}")
